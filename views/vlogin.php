@@ -26,7 +26,7 @@
 			Clave <input type="password" name="clave" placeholder="clave" class="form-control">
         </div>				
         
-		<input type="submit" name="submit" value="Login" class="btn btn-warning disabled">
+          <input type="submit" name="submit" value="Login" class="btn btn-warning disabled" <?php echo $loginStatus; ?>>
         </form>
 		
 	    </div>

@@ -19,14 +19,14 @@
 		<div class="card-body">
 <B>Nombre Cliente:</B> <?php echo $_SESSION['username']; ?> <BR>
 	<B>Id Cliente:</B> <?php echo $_SESSION['userid']; ?> <BR>
-<B>Compañia:</B> <?php echo $_SESSION['company']; ?> <BR><BR>
+<B>Compañia:</B> <?php echo $_SESSION['usercomp']; ?> <BR><BR>
 			
 		<!--Formulario con botones -->
-		<input type="button" value="Descargar Canciones" onclick="window.location.href=''" class="btn btn-warning disabled">
+		<input type="button" value="Descargar Canciones" onclick="window.location.href='./cdownload.php'" class="btn btn-warning disabled">
 		
-		<input type="button" value="Historial Facturas" onclick="window.location.href=''" class="btn btn-warning disabled">
+		<input type="button" value="Historial Facturas" onclick="window.location.href='./chistorial.php'" class="btn btn-warning disabled">
 		
-		<input type="button" value="Consultar Factura" onclick="window.location.href=''" class="btn btn-warning disabled"><BR>
+		<input type="button" value="Consultar Factura" onclick="window.location.href='./cconsultas.php'" class="btn btn-warning disabled"><BR>
 		
 		  <BR><a href="./logout.php">Cerrar Sesión</a>
 	</div>  
