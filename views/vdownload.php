@@ -32,7 +32,9 @@
     foreach($tracks as $t){
       $optionList .= '<option value='.$t['TrackId'].'>'.$t['Name']. ' - ' .$t['Composer'].' : '.$t['UnitPrice'].'&euro;</option>';
     }
-    echo $optionList;
+    if(isset($optionList)){
+      echo $optionList;
+    }
   }
 ?>
 		</select><br><br>
