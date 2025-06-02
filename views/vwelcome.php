@@ -24,7 +24,7 @@
 		<!--Formulario con botones -->
 		<input type="button" value="Descargar Canciones" onclick="window.location.href='./cdownload.php'" class="btn btn-warning disabled">
 		
-		<input type="button" value="Historial Facturas" onclick="window.location.href='./chistorial.php'" class="btn btn-warning disabled">
+		<input type="button" value="Historial Facturas" onclick="window.location.href='./chistFacturas.php'" class="btn btn-warning disabled">
 		
 		<input type="button" value="Consultar Factura" onclick="window.location.href='./cconsultas.php'" class="btn btn-warning disabled"><BR>
 		
