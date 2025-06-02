@@ -30,3 +30,12 @@ function calcPrice($tracks,$cart){
   }
   return round($price,2);
 }
+function getPrice($trackId,$tracks){
+    foreach($tracks as $trackInfo){
+      if($trackId == $trackInfo['TrackId']){
+        $price = $trackInfo['UnitPrice'];
+        break;
+      }
+    }
+  return $price;
+}

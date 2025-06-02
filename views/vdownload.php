@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
      <title>SPOTIFY - IES Leonardo Da Vinci</title>
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
   </head>
 
    
@@ -18,7 +18,7 @@
 	    
 
 	<!-- INICIO DEL FORMULARIO -->
-<form action="" method="post">
+          <form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
 
 <B>Nombre Cliente:</B> <?php echo $_SESSION['username']; ?> <BR>
 <B>Id Cliente:</B> <?php echo $_SESSION['userid']; ?> <BR>
@@ -29,6 +29,7 @@
 
 <?php
   if(isset($tracks)){
+    $optionList = '';
     foreach($tracks as $t){
       $optionList .= '<option value='.$t['TrackId'].'>'.$t['Name']. ' - ' .$t['Composer'].' : '.$t['UnitPrice'].'&euro;</option>';
     }
@@ -45,6 +46,7 @@
 			<input type="submit" value="Vaciar Cesta" name="vaciar" class="btn btn-warning disabled">
 			<input type="submit" value="Volver" name="volver" class="btn btn-warning disabled">
 			
+		  <BR><a href="./logout.php">Cerrar Sesión</a>
 		</div>	
 				
 	</form>

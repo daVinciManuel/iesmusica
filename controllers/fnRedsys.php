@@ -48,12 +48,11 @@ function redsysHandle($version,$datos,$signatureRecibida){
     if ($firma === $signatureRecibida){
       // codigo de respuesta:
       $responseCode = $miObj->getParameter("Ds_Response");
-      // si codigo ok => guardar en DB
-      if($responseCode === "0000"){
-        $pagoOK = true;
-      }
+      $date = $miObj->getParameter("Ds_Date");
+      $hour = $miObj->getParameter("Ds_Hour");
+      $cardNumber = $miObj->getParameter("Ds_Card_Number");
     }
-  return $pagoOK;
+  return ($responseCode === "0000") ? array($responseCode,$date,$hour,$cardNumber) : $responseCode;
 }
 function pagar($redsysData){
   echo '<form id="redsysForm" name="frm" action="https://sis-t.redsys.es:25443/sis/realizarPago" method="POST">';

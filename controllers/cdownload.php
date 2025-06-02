@@ -37,11 +37,33 @@ if(isset($_POST['vaciar'])){
 if(isset($_POST['volver'])){
   header('Location: ./cwelcome.php');
 }
-if(isset($_GET)){
-  $pagoOK = redsysHandle($_GET['Ds_SignatureVersion'],$_GET['Ds_MerchantParameters'],$_GET['Ds_Signature']);
-  if($pagoOK){
+if(isset($_GET['Ds_SignatureVersion'])){
+  include_once 'fnRedsys.php';
+  $pagoInfo = redsysHandle($_GET['Ds_SignatureVersion'],$_GET['Ds_MerchantParameters'],$_GET['Ds_Signature']);
+  if(is_array($pagoInfo)){
+    echo 'pago ok';
+    echo '<br>';
     // guardar en DB
+    include_once '../models/mdownloadInserts.php';
+    include_once './fndownload.php';
+    $invoiceId = getInvoiceId();
+    $factura = insertInvoice($invoiceId, $_SESSION['userid'], date('Y-m-d'), calcPrice($tracks,$_SESSION['cart']));
+
+    $invoiceTracks = array();
+    foreach($_SESSION['cart']['track'] as $trackId){
+      array_push($invoiceTracks, array("TrackId" => $trackId, "UnitPrice" => getPrice($trackId, $tracks), "Quantity" => $_SESSION['cart']['cantidad'][$trackId]));
+    }
+
+    $lineaFactura = insertInvoiceLine($invoiceId,$invoiceTracks);
+
+    if($factura == true && $lineaFactura == true){
+      echo 'Inserts a db ok';
+    echo '<br>';
+    }
+  }else{
+    echo 'ERROR: codigo de respuesta de Redsys ' . $pagoInfo;
   }
+  cleanCart();
 }
 
 echo '<br><br>';
