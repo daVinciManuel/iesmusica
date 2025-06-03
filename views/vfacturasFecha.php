@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>SPOTIFY - IES Leonardo Da Vinci - Alquiler Películas</title>
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
     </head>
    
 
@@ -22,20 +22,11 @@
 <B>Compañia:</B> <?php echo $_SESSION['usercomp']; ?> <BR><BR>
 	
 <form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="POST">
-	<B>Número Factura: </B><select name="facturas" class="form-control">
-
-<?php
-  if(isset($facturas)){
-    $optionTags = '';
-    foreach($facturas as $f){
-      $optionTags .= "<option value='". $f['InvoiceId']."'>Factura ".$f['InvoiceId']."</option>";
-    }
-    if(isset($optionTags)){
-      echo $optionTags;
-    }
-  }
-?>
-	</select>
+            Facturas entre las fechas:
+            <br>
+            DESDE <input type="date" name="fecha_desde">
+            <br>
+            HASTA <input type="date" name="fecha_hasta">
 		
 		<BR>
 		<BR>		
@@ -45,6 +36,26 @@
 		</div>		
 	</form>
 	<!-- FIN DEL FORMULARIO -->
+    <?php if(isset($facturas)){ ?>
+      <table border='1'>
+        <thead>
+          <tr>
+            <th>Factura</th>
+            <th>Fecha</th>
+            <th>Monto</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php foreach($facturas as $f){ ?>
+          <tr>
+            <td><?php echo $f['InvoiceId'];?></td>
+            <td><?php echo $f['InvoiceDate'];?></td>
+            <td><?php echo $f['Total'];?></td>
+          </tr>
+          <?php } ?>
+        </tbody>
+      </table>
+    <?php } ?>
   </div>
 
 

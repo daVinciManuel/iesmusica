@@ -26,7 +26,7 @@
 		
 		<input type="button" value="Historial Facturas" onclick="window.location.href='./chistFacturas.php'" class="btn btn-warning disabled">
 		
-		<input type="button" value="Consultar Factura" onclick="window.location.href='./cconsultas.php'" class="btn btn-warning disabled"><BR>
+		<input type="button" value="Consultar Facturas Por Fecha" onclick="window.location.href='./cfacturasFecha.php'" class="btn btn-warning disabled"><BR>
 		
 		  <BR><a href="./logout.php">Cerrar Sesión</a>
 	</div>  
