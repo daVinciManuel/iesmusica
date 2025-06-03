@@ -63,6 +63,25 @@
           </tr>
         </tbody>
       </table>
+          <br>
+      <table border='1'>
+        <thead>
+          <tr>
+            <th>Pista</th>
+            <th>Precio Unidad</th>
+            <th>Cantidad</th>
+          </tr>
+        </thead>
+        <tbody>
+              <?php foreach($info as $f){ ?>
+          <tr>
+            <td><?php echo $f['Name'];?></td>
+            <td><?php echo $f['UnitPrice'];?></td>
+            <td><?php echo $f['Quantity'];?></td>
+          </tr>
+    <?php } ?>
+        </tbody>
+      </table>
     <?php } ?>
 		  <BR><a href="./logout.php">Cerrar Sesión</a>
   </div>

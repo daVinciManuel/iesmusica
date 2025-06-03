@@ -8,6 +8,7 @@ $facturas = getFacturasOf($_SESSION['userid']);
 if(isset($_POST['request'])){
 
   if(isset($_POST['facturas'])){
+    $info = getInfoOfFactura($_POST['facturas']);
     foreach($facturas as $f){
       if($f['InvoiceId'] == $_POST['facturas']){
         $factSelected = array("id" => $f['InvoiceId'], "date" => $f['InvoiceDate'], "price" => $f['Total']);

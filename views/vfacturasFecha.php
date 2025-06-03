@@ -17,18 +17,30 @@
 		<div class="card border-success mb-3" style="max-width: 30rem;">
 		<div class="card-header">Consultar Factura - SPOTIFY Leonardo Da Vinci</div>
 		<div class="card-body">
-	<B>Nombre Cliente:</B>   <BR>
-	<B>Id Cliente:</B> <BR>
-	<B>Compañia:</B> <BR><BR>
+<B>Nombre Cliente:</B> <?php echo $_SESSION['username']; ?> <BR>
+	<B>Id Cliente:</B> <?php echo $_SESSION['userid']; ?> <BR>
+<B>Compañia:</B> <?php echo $_SESSION['usercomp']; ?> <BR><BR>
 	
+<form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="POST">
 	<B>Número Factura: </B><select name="facturas" class="form-control">
-				
+
+<?php
+  if(isset($facturas)){
+    $optionTags = '';
+    foreach($facturas as $f){
+      $optionTags .= "<option value='". $f['InvoiceId']."'>Factura ".$f['InvoiceId']."</option>";
+    }
+    if(isset($optionTags)){
+      echo $optionTags;
+    }
+  }
+?>
 	</select>
 		
 		<BR>
 		<BR>		
 		<div>
-		    <input type="submit" value="Datos Factura" name="Volver" class="btn btn-warning disabled">
+		    <input type="submit" value="Datos Factura" name="enviar" class="btn btn-warning disabled">
 			<input type="submit" value="Volver" name="Volver" class="btn btn-warning disabled">
 		</div>		
 	</form>
